@@ -35,7 +35,7 @@ public class ThymeleafCategoryServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String categoryName = (String) req.getParameter("name");
-        String categoryDesc = (String) req.getParameter("desc");
+        String categoryDesc = (String) req.getParameter("description");
         categoryService.create(categoryName,categoryDesc);
         resp.sendRedirect("/servlet/thymeleaf/category");
     }
