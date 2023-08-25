@@ -1,4 +1,4 @@
-package mk.ukim.finki.wpeshop.web;
+package mk.ukim.finki.wpeshop.web.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
