@@ -1,4 +1,4 @@
-package mk.ukim.finki.wpeshop.repository;
+package mk.ukim.finki.wpeshop.repository.impl;
 
 import mk.ukim.finki.wpeshop.bootstrap.DataHolder;
 import mk.ukim.finki.wpeshop.model.Category;
