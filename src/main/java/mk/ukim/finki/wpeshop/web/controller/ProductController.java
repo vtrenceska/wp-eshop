@@ -59,10 +59,10 @@ public class ProductController {
     public String editProductPage(@PathVariable Long id, Model model){
         if(this.productService.findById(id).isPresent()){
             Product product = this.productService.findById(id).get();
-            List<Category> categories = this.categoryService.listCategories();
             List<Manufacturer> manufacturers = this.manufacturerService.findAll();
-            model.addAttribute("categories", categories);
+            List<Category> categories = this.categoryService.listCategories();
             model.addAttribute("manufacturers", manufacturers);
+            model.addAttribute("categories", categories);
             model.addAttribute("product", product);
             return "add-product";
         }
