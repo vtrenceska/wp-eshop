@@ -1,8 +1,10 @@
 package mk.ukim.finki.wpeshop.web.controller;
 
+import mk.ukim.finki.wpeshop.model.Role;
 import mk.ukim.finki.wpeshop.model.exceptions.InvalidArgumentsException;
 import mk.ukim.finki.wpeshop.model.exceptions.PasswordsDoNotMatchException;
 import mk.ukim.finki.wpeshop.service.AuthService;
+import mk.ukim.finki.wpeshop.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class RegisterController {
 
     private final AuthService authService;
+    private final UserService userService;
 
-    public RegisterController(AuthService authService) {
+    public RegisterController(AuthService authService, UserService userService) {
         this.authService = authService;
+        this.userService = userService;
     }
 
     @GetMapping
@@ -26,7 +30,9 @@ public class RegisterController {
             model.addAttribute("hasError", true);
             model.addAttribute("error", error);
         }
-        return "register";
+        model.addAttribute("bodyContent","register");
+        return "master-template";
+
     }
 
     @PostMapping
@@ -34,9 +40,10 @@ public class RegisterController {
                            @RequestParam String password,
                            @RequestParam String repeatPassword,
                            @RequestParam String name,
-                           @RequestParam String surname){
+                           @RequestParam String surname,
+                           @RequestParam Role role){
         try{
-            this.authService.register(username, password, repeatPassword, name, surname);
+            this.userService.register(username, password, repeatPassword, name, surname, role);
             return "redirect:/login";
         }
         catch (PasswordsDoNotMatchException | InvalidArgumentsException exception){
