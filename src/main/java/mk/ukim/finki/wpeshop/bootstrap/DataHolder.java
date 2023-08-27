@@ -1,10 +1,7 @@
 package mk.ukim.finki.wpeshop.bootstrap;
 
 import lombok.Getter;
-import mk.ukim.finki.wpeshop.model.Category;
-import mk.ukim.finki.wpeshop.model.Manufacturer;
-import mk.ukim.finki.wpeshop.model.Product;
-import mk.ukim.finki.wpeshop.model.User;
+import mk.ukim.finki.wpeshop.model.*;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -19,6 +16,7 @@ public class DataHolder {
     public static List<User> users = new ArrayList<>();
     public static List<Manufacturer> manufacturers = new ArrayList<>();
     public static List<Product> products = new ArrayList<>();
+    public static List<ShoppingCart> shoppingCarts = new ArrayList<>();
 
     @PostConstruct
     public void init(){
@@ -31,6 +29,7 @@ public class DataHolder {
 
         Manufacturer manufacturer = new Manufacturer("Nike", "NY NY");
         manufacturers.add(manufacturer);
+        manufacturers.add(new Manufacturer("Apple", "LA LA"));
 
         Category category = new Category("Sport", "Sport Category");
         categories.add(category);
